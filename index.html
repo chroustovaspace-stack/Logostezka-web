@@ -145,14 +145,15 @@
 
   footer { background: linear-gradient(135deg, #060e06 0%, #0d1a0d 50%, #0f1a0f 100%); padding: 4rem 2rem 2rem; text-align: center; }
   footer p { font-size: 0.75rem; color: rgba(255,255,255,0.3); font-weight: 300; }
-  footer a { color: var(--green-light); text-decoration: none; }
+ footer a { color: var(--green-light); text-decoration: none; }
 
   @media (max-width: 900px) {
     .omne-grid { grid-template-columns: 1fr; }
     .omne-card { position: static; }
+    .objednani-grid { grid-template-columns: 1fr; } /* Tímhle hodíme mapu pod kontakty na mobilech a tabletech */
   }
   @media (max-width: 768px) {
-    .obory-header { grid-template-columns: 1fr; gap: 2rem; }
+    .obory-header, .objednani-grid { grid-template-columns: 1fr; gap: 2rem; }
     .clover-grid, .prokoho-cards { grid-template-columns: 1fr; }
     .clover-grid-5th .clover-card { width: 100%; }
     .nav-links { display: none; }
