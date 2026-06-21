@@ -50,21 +50,52 @@
   #jak-pomahame { background: linear-gradient(180deg, var(--cream2) 0%, #e8e3d8 100%); }
   #o-mne { background: linear-gradient(180deg, var(--white) 0%, #f8f5ef 100%); }
   #pro-koho { background: linear-gradient(180deg, #e8e3d8 0%, var(--cream2) 100%); }
-  #cenik { background: linear-gradient(180deg, var(--white) 0%, #f8f5ef 100%); padding: 5rem 2rem; }
+ #cenik { background: linear-gradient(180deg, var(--white) 0%, #f8f5ef 100%); padding: 5rem 2rem; }
   
-  .cenik-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 2.5rem; }
-  .cenik-card { background: var(--white); border: 1.5px solid rgba(93,163,94,0.2); border-radius: 16px; padding: 1.8rem 1.6rem; display: flex; flex-direction: column; gap: 0.6rem; transition: box-shadow 0.2s, transform 0.2s; }
-  .cenik-card:hover { box-shadow: 0 8px 24px rgba(22,33,22,0.08); transform: translateY(-3px); }
-  .cenik-card-name { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green-mid); }
-  .cenik-card-desc { font-size: 0.82rem; font-weight: 500; color: var(--text-muted); line-height: 1.6; flex-grow: 1; }
-  .cenik-card-price { font-size: 1.4rem; font-weight: 700; color: var(--green-dark); margin-top: 0.8rem; }
-  .cenik-card-price span { font-size: 0.8rem; font-weight: 500; color: var(--text-muted); }
-  .cenik-note { margin-top: 2rem; background: rgba(117,187,103,0.08); border: 1px solid rgba(117,187,103,0.25); border-radius: 12px; padding: 1.2rem 1.6rem; display: flex; gap: 1rem; align-items: flex-start; }
+  /* Rozložení nahoře (2 velké karty) a dole (4 malé) */
+  .cenik-top-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2.5rem; }
+  .cenik-bottom-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2rem; }
+  
+  /* Velké karty (Konzultace a Terapie) */
+  .cenik-main-card { background: var(--white); border: 1.5px solid rgba(93,163,94,0.2); border-radius: 16px; padding: 2.5rem 2.5rem; display: flex; flex-direction: column; transition: box-shadow 0.2s, transform 0.2s; }
+  .cenik-main-card:hover { box-shadow: 0 12px 32px rgba(22,33,22,0.08); transform: translateY(-3px); }
+  .cenik-main-card h3 { font-size: 1.4rem; font-weight: 600; color: var(--green-dark); margin-bottom: 0.2rem; }
+  .cenik-main-subtitle { font-size: 0.85rem; font-weight: 500; color: var(--green-mid); margin-bottom: 1.8rem; border-bottom: 2px solid rgba(117,187,103,0.2); padding-bottom: 1rem; }
+  
+  /* Seznamy ve velkých kartách */
+  .cenik-list { list-style: none; display: flex; flex-direction: column; gap: 1.2rem; }
+  .cenik-list li { position: relative; padding-left: 1.8rem; font-size: 0.95rem; font-weight: 500; color: var(--text); line-height: 1.5; }
+  .cenik-list li::before { content: '✓'; position: absolute; left: 0; top: -1px; color: var(--green-light); font-weight: bold; font-size: 1.1rem; }
+  .cenik-list-note { display: block; font-size: 0.8rem; color: var(--text-muted); font-weight: 400; margin-top: 0.3rem; font-style: italic; }
+
+/* Nové styly pro zarovnání ceny a času doprava */
+  .cenik-item-flex { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+  .cenik-item-title { font-weight: 600; color: var(--text); }
+  .cenik-item-right { text-align: right; flex-shrink: 0; }
+  .cenik-item-price { font-weight: 700; color: var(--green-dark); font-size: 1.05rem; }
+  .cenik-item-time { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; }
+  
+  /* 4 Malé kartičky dole */
+  .cenik-small-card { background: var(--white); border: 1.5px solid rgba(93,163,94,0.2); border-radius: 16px; padding: 1.8rem 1.2rem; text-align: center; display: flex; flex-direction: column; justify-content: center; gap: 0.5rem; transition: box-shadow 0.2s, transform 0.2s; }
+  .cenik-small-card:hover { box-shadow: 0 8px 24px rgba(22,33,22,0.08); transform: translateY(-3px); border-color: var(--green-mid); }
+  .cenik-small-title { font-size: 0.85rem; font-weight: 700; color: var(--green-mid); text-transform: uppercase; letter-spacing: 0.08em; }
+  .cenik-small-price { font-size: 1.4rem; font-weight: 700; color: var(--green-dark); }
+  .cenik-small-price span { font-size: 0.8rem; font-weight: 500; color: var(--text-muted); }
+
+  .cenik-note { margin-top: 3rem; background: rgba(117,187,103,0.08); border: 1px solid rgba(117,187,103,0.25); border-radius: 12px; padding: 1.2rem 1.6rem; display: flex; gap: 1rem; align-items: flex-start; }
   .cenik-note-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
   .cenik-note p { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; line-height: 1.7; margin: 0; }
   .cenik-note strong { color: var(--green-dark); font-weight: 600; }
-  @media (max-width: 700px) { .cenik-grid { grid-template-columns: 1fr; } }
-  
+
+  /* Přizpůsobení pro mobily a tablety */
+  @media (max-width: 900px) {
+    .cenik-top-grid { grid-template-columns: 1fr; }
+    .cenik-bottom-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 500px) {
+    .cenik-bottom-grid { grid-template-columns: 1fr; }
+  }
+
   #objednani { background: linear-gradient(180deg, #060e06 0%, #0d1a0d 30%, #162116 60%, #1e3220 100%); }
 
   .section-inner { max-width: 1100px; margin: 0 auto; }
@@ -343,50 +374,138 @@
   </div>
 </section>
 
- <section id="cenik">
+<section id="cenik">
   <div class="section-inner">
     <p class="section-label">Ceník služeb</p>
-    <h2 class="section-title">Transparentní <br><strong>ceny bez překvapení</strong></h2>
+   <h2 class="section-title">Transparentní <br><strong>ceny bez překvapení</strong></h2>
     <div class="section-divider"></div>
-    <div class="cenik-grid">
-      <div class="cenik-card">
-        <div class="cenik-card-name">Úvodní konzultace</div>
-        <p class="cenik-card-desc">První setkání, zmapování potřeb dítěte nebo dospělého, stanovení dalšího postupu. <strong>Objednání pouze telefonicky.</strong></p>
-        <div class="cenik-card-price">— Kč <span>/ 60 min</span></div>
+
+    <div class="cenik-top-grid">
+      
+      <div class="cenik-main-card">
+        <h3>Vstupní konzultace</h3>
+        <p class="cenik-main-subtitle">Součástí je návrh terapie na míru</p>
+        
+        <ul class="cenik-list">
+          <li>
+            <div class="cenik-item-flex">
+              <span class="cenik-item-title">Speciálně - pedagogická diagnostika</span>
+              <div class="cenik-item-right">
+                <div class="cenik-item-price">2 100 Kč</div>
+                <div class="cenik-item-time">90 - 120 min</div>
+              </div>
+            </div>
+          </li>
+          
+          <li>
+            <div class="cenik-item-flex">
+              <span class="cenik-item-title">Logopedický screening</span>
+              <div class="cenik-item-right">
+                <div class="cenik-item-price">1 800 Kč</div>
+                <div class="cenik-item-time">60 - 90 min</div>
+              </div>
+            </div>
+          </li>
+          
+          <li>
+            <div class="cenik-item-flex">
+              <span class="cenik-item-title">Posouzení školní připravenosti</span>
+              <div class="cenik-item-right">
+                <div class="cenik-item-price">1 800 Kč</div>
+                <div class="cenik-item-time">60 - 90 min</div>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
-      <div class="cenik-card">
-        <div class="cenik-card-name">Logopedické vyšetření</div>
-        <p class="cenik-card-desc">Komplexní diagnostika řečových a jazykových schopností, vypracování zprávy a doporučení.</p>
-        <div class="cenik-card-price">— Kč <span>/ 90 min</span></div>
-      </div>
-      <div class="cenik-card">
-        <div class="cenik-card-name">Terapeutické sezení</div>
-        <p class="cenik-card-desc">Individuální logopedická terapie zaměřená na konkrétní cíle stanovené při vyšetření.</p>
-        <div class="cenik-card-price">— Kč <span>/ 45 min</span></div>
-      </div>
-      <div class="cenik-card">
-        <div class="cenik-card-name">Skupinová terapie</div>
-        <p class="cenik-card-desc">Terapie v malé skupině dětí zaměřená na rozvoj komunikace a sociálních dovedností.</p>
-        <div class="cenik-card-price">— Kč <span>/ 60 min</span></div>
-      </div>
-      <div class="cenik-card">
-        <div class="cenik-card-name">Konzultace pro rodiče</div>
-        <p class="cenik-card-desc">Poradenství a metodická podpora pro rodiče — jak pracovat s dítětem doma.</p>
-        <div class="cenik-card-price">— Kč <span>/ 45 min</span></div>
-      </div>
-      <div class="cenik-card">
-        <div class="cenik-card-name">Online konzultace</div>
-        <p class="cenik-card-desc">Vzdálená konzultace přes videohovor pro klienty mimo Liberec nebo s omezenou mobilitou.</p>
-        <div class="cenik-card-price">— Kč <span>/ 45 min</span></div>
+
+    <div class="cenik-main-card">
+        <h3>Terapie</h3>
+        
+        <!-- Nově vyřešený ceník přímo v podnadpisu -->
+        <div class="cenik-main-subtitle" style="display: flex; flex-direction: column; gap: 0.5rem; padding-bottom: 1.2rem; margin-bottom: 1.5rem;">
+          <div class="cenik-item-flex">
+           <span class="cenik-item-title" style="font-weight: 500; color: var(--green-mid);">Délka sezení: 45 minut</span>
+            <div class="cenik-item-right">
+              <div class="cenik-item-price">800 Kč</div>
+            </div>
+          </div>
+          <div class="cenik-item-flex">
+            <span class="cenik-item-title" style="font-weight: 500; color: var(--green-mid);">Délka sezení: 60 minut</span>
+            <div class="cenik-item-right">
+              <div class="cenik-item-price">1 050 Kč</div>
+            </div>
+          </div>
+        </div>
+
+        <ul class="cenik-list">
+          <li>Trénink jazykových schopností dle D. B. Elkonina</li>
+          <li>Stimulační program Maxík</li>
+          <li>Percepční a motorická oslabení ve školní praxi</li>
+          <li>Logopedická prevence</li>
+          <li>Miofunkční terapie</li>
+          <li>Neuro - vývojová stimulace</li>
+        </ul>
       </div>
     </div>
-    <div class="cenik-note">
-      <div class="cenik-note-icon">📞</div>
-      <p><strong>Důležité upozornění:</strong> Úvodní konzultace předcházející každému vyšetření je možné objednat <strong>pouze telefonicky</strong>. Prosím, kontaktujte nás přímo — rádi vám najdeme vhodný termín.</p>
+
+   
+   <div class="cenik-bottom-grid">
+      
+      <!-- Políčko 1 -->
+      <div class="cenik-small-card">
+        <h4 class="cenik-small-title">Konzultace pro rodiče</h4>
+        <div class="cenik-small-price" style="margin-top: auto;">1 200 Kč <span>/ 60 min</span></div>
+      </div>
+      
+      <!-- Políčko 2 -->
+      <div class="cenik-small-card">
+        <div>
+          <h4 class="cenik-small-title">Potvrzení ke studiu</h4>
+          <p style="font-size: 0.72rem; color: var(--text-muted); margin: 0.4rem 0 0 0; line-height: 1.4; text-transform: none; letter-spacing: normal;">(přijímací řízení na SŠ a VŠ)</p>
+        </div>
+        <div class="cenik-small-price" style="margin-top: auto;">400 Kč <span>/ potvrzení</span></div>
+      </div>
+
+      <!-- Políčko 3 -->
+      <div class="cenik-small-card">
+        <h4 class="cenik-small-title">Skupinová terapie</h4>
+        <div class="cenik-small-price" style="font-size: 1.05rem; margin-top: auto;">Dle dohody<br><span style="display:block; margin-top: 0.2rem;">(podle velikosti skupiny)</span></div>
+      </div>
+
+      <!-- Políčko 4 -->
+      <div class="cenik-small-card">
+        <h4 class="cenik-small-title">Online terapie</h4>
+        <div class="cenik-small-price" style="font-size: 1.1rem; margin-top: auto;">Po dohodě</div>
+      </div>
+
     </div>
+
+    <!-- Blok s důležitými informacemi pod ceníkem -->
+    <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 3rem;">
+      
+      <!-- Původní upozornění na objednání -->
+      <div class="cenik-note" style="margin-top: 0;">
+        <div class="cenik-note-icon">📞</div>
+        <p><strong>Objednání:</strong> Vstupní konzultace předcházející vyšetření je možné objednat <strong>pouze telefonicky</strong>. Prosím, kontaktujte mě přímo — ráda Vám najdu vhodný termín.</p>
+      </div>
+
+      <!-- Nové upozornění: Storno -->
+      <div class="cenik-note" style="margin-top: 0; background: rgba(22,33,22,0.03); border-color: rgba(22,33,22,0.08);">
+        <div class="cenik-note-icon">⏱️</div>
+        <p><strong>Storno podmínky:</strong> Termín lze bezplatně zrušit formou SMS nejpozději <strong>24 hodin předem</strong>. V případě náhlého onemocnění akceptuji omluvu nejpozději <strong>do 7:00 ráno</strong> v den termínu. Při pozdějším zrušení nebo nedostavení se bez omluvy je nutné termín uhradit ve výši 100 % ceny.</p>
+      </div>
+
+      <!-- Nové upozornění: Záloha -->
+      <div class="cenik-note" style="margin-top: 0; background: rgba(22,33,22,0.03); border-color: rgba(22,33,22,0.08);">
+        <div class="cenik-note-icon">💡</div>
+        <p><strong>Rezervační záloha:</strong> Při vstupní konzultaci je vybírána rezervační záloha ve výši jedné terapie předem. Záloha se vybírá v hotovosti pro přípád, že se klient bez omluvy nedostaví. Při řádném ukončení spolupráce Vám bude záloha vrácena v plné výši.</p>
+      </div>
+
+    </div>
+
   </div>
 </section>
-
 <section id="objednani">
   <div class="section-inner">
     <p class="section-label"><strong>Přijďte za námi</strong></p>
