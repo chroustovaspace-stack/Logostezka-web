@@ -795,21 +795,21 @@ title: Hlavní stránka
           Mgr. et Mgr. Monika Chroustová
         </p>
         <p class="editable" style="font-size: 0.75rem; color: rgba(255,255,255,0.4); font-weight: 500; margin: 0; line-height: 1.5;">
-          Adresa: Gorkého 592/16, Liberec, 46001
+          Adresa: Gorkého 592/16, Liberec, 460 01
         </p>
         <p class="editable" style="font-size: 0.75rem; color: rgba(255,255,255,0.4); font-weight: 500; margin: 0; line-height: 1.5;">
-          IČO:&nbsp;
+          IČO: 29968534
         </p>
         <p class="editable" style="font-size: 0.75rem; color: rgba(255,255,255,0.4); font-weight: 500; margin: 0; line-height: 1.5;">
-          Fyzická osoba zapsaná v živnostenském rejstříku vedeném u [Doplňte úřad, např. Magistrátu města Liberec].
+          Fyzická osoba zapsaná v živnostenském rejstříku vedeném u Magistrátu města Liberce.
         </p>
       </div>
 
       <div style="display: flex; flex-direction: column; gap: 0.8rem; text-align: left; min-width: 200px;">
-        <a href="#" class="editable" style="color: var(--green-light); text-decoration: none; font-size: 0.8rem; font-weight: 500; transition: color 0.2s;">
+        <a href="vop.html" target="_blank" rel="opener" class="editable" style="color: var(--green-light); text-decoration: none; font-size: 0.8rem; font-weight: 500; transition: color 0.2s;">
           Obchodní podmínky
         </a>
-        <a href="#" class="editable" style="color: var(--green-light); text-decoration: none; font-size: 0.8rem; font-weight: 500; transition: color 0.2s;">
+        <a href="gdpr.html" target="_blank" rel="opener" class="editable" style="color: var(--green-light); text-decoration: none; font-size: 0.8rem; font-weight: 500; transition: color 0.2s;">
           Zásady ochrany osobních údajů
         </a>
       </div>
@@ -838,9 +838,7 @@ title: Hlavní stránka
       </h3>
       <form id="contactForm" action="https://formspree.io/f/mrewzaob" method="POST">
         <div class="form-group">
-          <label for="name" class="editable">
-        Jméno a příjmení
-      </label>
+          <label for="name" class="editable">Jméno a příjmení</label>
           <input type="text" id="name" name="name" required placeholder="Např. Jana Nováková" />
         </div>
         <div class="form-group">
@@ -851,12 +849,11 @@ title: Hlavní stránka
           <label for="message" class="editable">Zpráva</label>
           <textarea id="message" name="message" required placeholder="Dobrý den, ráda bych se domluvila na konzultaci..."></textarea>
         </div>
-       <button type="submit" class="btn-submit editable">Odeslat zprávu</button>
+        <button type="submit" class="btn-submit editable">Odeslat zprávu</button>
         
         <p class="editable" style="font-size: 0.8rem; color: #666; text-align: center; margin-top: 15px; margin-bottom: 0;">
-          Odesláním formuláře souhlasíte se zpracováním osobních údajů za účelem zpětného kontaktování.
+          Odesláním formuláře souhlasíte se <a href="gdpr.html" target="_blank" rel="opener" style="color: var(--green-mid); text-decoration: underline;">zpracováním osobních údajů</a>.
         </p>
-        
       </form>
     </div>
 
@@ -877,7 +874,6 @@ title: Hlavní stránka
 </div>
 
 <script>
-  // Funkce, která okno zavře a v pozadí ho vyčistí pro případné další použití
   function closeContactModal() {
     document.getElementById('contactModal').style.display = 'none';
     setTimeout(() => {
@@ -887,7 +883,6 @@ title: Hlavní stránka
     }, 300);
   }
 
-  // Zavírání okna při kliknutí mimo
   window.onclick = function(event) {
     let modal = document.getElementById('contactModal');
     if (event.target == modal) {
@@ -895,28 +890,24 @@ title: Hlavní stránka
     }
   }
 
-  // Elegantní odeslání bez přesměrování na jinou stránku
   var form = document.getElementById("contactForm");
   form.addEventListener("submit", async function(event) {
-    event.preventDefault(); // Zabrání přesměrování pryč z webu
+    event.preventDefault();
     var data = new FormData(form);
     
-    // Změníme text tlačítka, aby uživatel viděl, že se něco děje
     var btn = form.querySelector('.btn-submit');
     var originalBtnText = btn.innerHTML;
     btn.innerHTML = "Odesílám...";
     btn.disabled = true;
 
-    // Odeslání dat potichu na pozadí
     fetch(form.action, {
       method: form.method,
       body: data,
       headers: {
-          'Accept': 'application/json'
+        'Accept': 'application/json'
       }
     }).then(response => {
       if (response.ok) {
-        // Úspěch! Skryjeme formulář a ukážeme naše krásné poděkování
         document.getElementById('formContainer').style.display = "none";
         document.getElementById('successMessage').style.display = "block";
       } else {
@@ -925,7 +916,6 @@ title: Hlavní stránka
     }).catch(error => {
       alert("Došlo k chybě při odesílání.");
     }).finally(() => {
-      // Vrátíme tlačítko do původního stavu pro příště
       btn.innerHTML = originalBtnText;
       btn.disabled = false;
     });
